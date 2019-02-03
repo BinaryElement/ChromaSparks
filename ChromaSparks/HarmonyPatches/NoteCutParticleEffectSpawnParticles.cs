@@ -18,14 +18,14 @@ namespace Chroma.HarmonyPatches {
 
             if (!ChromaSparksConfig.ParticleManipulationEnabled) return;
 
-            sparkleParticlesCount = 150 * Mathf.FloorToInt(ChromaSparksConfig.SlashParticlesMult);
-            explosionParticlesCount = 150 * Mathf.FloorToInt(ChromaSparksConfig.ExplosionParticlesMult);
+            sparkleParticlesCount = Mathf.FloorToInt(150 * ChromaSparksConfig.SlashParticlesMult);
+            explosionParticlesCount = Mathf.FloorToInt(150 * ChromaSparksConfig.ExplosionParticlesMult);
 
             ParticleSystem[] sparklesPS = __instance.GetField<ParticleSystem[]>("_sparklesPS");
 
             foreach (ParticleSystem sparklesSubPS in sparklesPS) {
                 ParticleSystem.MainModule sparkles = sparklesSubPS.main;
-                if (ChromaSparksConfig.SlashParticlesMult != 1) sparkles.maxParticles = 150 * Mathf.FloorToInt(Mathf.Max(ChromaSparksConfig.ParticlesGlobalMaxMult, ChromaSparksConfig.SlashParticlesMult));
+                if (ChromaSparksConfig.SlashParticlesMult != 1) sparkles.maxParticles = Mathf.FloorToInt(150 * Mathf.Max(ChromaSparksConfig.ParticlesGlobalMaxMult, ChromaSparksConfig.SlashParticlesMult));
                 if (ChromaSparksConfig.SlashParticlesTimeScale != 1) sparkles.simulationSpeed = ChromaSparksConfig.SlashParticlesTimeScale;
                 if (ChromaSparksConfig.SlashParticlesLifeMult != 1) {
                     sparkles.duration = 2f * ChromaSparksConfig.SlashParticlesLifeMult;
@@ -59,7 +59,7 @@ namespace Chroma.HarmonyPatches {
             ParticleSystem explosionPS = __instance.GetField<ParticleSystem>("_explosionPS");
 
             ParticleSystem.MainModule explosions = explosionPS.main;
-            if (ChromaSparksConfig.ExplosionParticlesMult != 1) explosions.maxParticles = 150 * Mathf.FloorToInt(Mathf.Max(ChromaSparksConfig.ParticlesGlobalMaxMult, ChromaSparksConfig.ExplosionParticlesMult));
+            if (ChromaSparksConfig.ExplosionParticlesMult != 1) explosions.maxParticles = Mathf.FloorToInt(150 * Mathf.Max(ChromaSparksConfig.ParticlesGlobalMaxMult, ChromaSparksConfig.ExplosionParticlesMult));
             if (ChromaSparksConfig.ExplosionParticlesTimeScale != 1) explosions.simulationSpeed = ChromaSparksConfig.ExplosionParticlesTimeScale;
             if (ChromaSparksConfig.ExplosionParticlesLifeMult != 1) {
                 explosions.duration = 2f * ChromaSparksConfig.ExplosionParticlesLifeMult;
