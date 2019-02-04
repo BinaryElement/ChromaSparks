@@ -9,7 +9,7 @@ namespace ChromaSparks {
     public class Plugin : IPlugin, IChromaExtension {
 
         public string Name => "ChromaSparks";
-        public string Version => "1.0.1";
+        public string Version => "1.0.2";
 
         public void OnApplicationStart() {
             SceneManager.activeSceneChanged += SceneManagerOnActiveSceneChanged;

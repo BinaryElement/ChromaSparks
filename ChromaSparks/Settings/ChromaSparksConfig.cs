@@ -16,7 +16,12 @@ namespace Chroma.Settings {
         }
 
         private static void OnLoadSettingsEvent(Config iniProfile, LoadSettingsType type) {
-            
+
+
+            if (type == LoadSettingsType.INITIAL) {
+                technicolourSparksStyle = (TechnicolourStyle)ChromaConfig.GetInt("Technicolour", "technicolourSparksStyle", 0);
+            }
+
             /*
              * PARTICLES
              */
